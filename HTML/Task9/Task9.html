@@ -1,0 +1,156 @@
+<!-- Write HTML input tags snippet to show default values for all Form elements. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Elements</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      label {
+        display: block;
+      }
+      h3 {
+        color: rgb(17, 117, 233);
+      }
+      .row{
+        margin: 20px 30px !important;
+      }
+      form {
+        padding: 20px;
+        margin: 20px;
+        -webkit-box-shadow: 0px 0px 18px -1px rgba(161,148,161,0.75);
+        -moz-box-shadow: 0px 0px 18px -1px rgba(161,148,161,0.75);
+        box-shadow: 0px 0px 18px -1px rgba(161,148,161,0.75);
+      }
+      .width-class {
+        width: 250px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3 class="text-center my-4">Employee Joining Form</h3>
+    <form method="post" id="form">
+      <div class="row">
+        <div class="col-6">
+          <label for="fname">First Name </label>
+          <input type="text" name="searchfield" id="fname" value="Karthika" class="width-class"/>
+        </div>
+        <div class="col-6">
+          <label for="lname">Last Name </label>
+          <input type="text" name="searchfield" id="lname" value="Rajaram"  class="width-class"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <label for="email">Email </label>
+          <input
+            type="email"
+            id="email"
+            name="emailfield"
+            autocomplete="on"
+            value="karthika.rajaram8@gmail.com"
+            class="width-class"
+          />
+        </div>
+        <div class="col-6">
+          <label for="tele">Telephone </label>
+          <input id="tele" type="tel" name="telfield" value="+918754817789" class="width-class"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <label for="date">Date of Joining </label>
+          <input type="date" id="date" name="datefield" value="2022-01-01"  class="width-class"/>
+        </div>
+        <div class="col-6">
+          <label for="years">Years of Experience </label>
+          <select id="years" class="width-class">
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <label for="skills">Skills</label>
+          <input
+            type="checkbox"
+            id="skills"
+            name="skills"
+            value="HTML"
+            checked
+          />
+          HTML/CSS
+          <input
+            type="checkbox"
+            id="skills"
+            name="skills"
+            value="JS"
+            checked
+          />
+          JavaScript
+          <input type="checkbox" id="skills" name="skills" value="Angular" />
+          Angular
+          <input type="checkbox" id="skills" name="skills" value="React" />
+          React
+          <input type="checkbox" id="skills" name="skill" value="Node" /> Node
+          <input type="checkbox" id="skills" name="skills" value="Java" /> Java
+        </div>
+        <div class="col-6">
+          <label for="radio">Serving Notice</label>
+          <input type="radio" id="yes" name="notice" value="Yes" checked />
+          Yes <input type="radio" id="no" name="notice" value="No" /> No
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <label for="summary">Summary</label>
+          <textarea id="summary" name="summary" rows="10" cols="50">
+Accomplished Web Developer with 5+ years of experience designing and implementing responsive websites. Prof in HTML, CSS, JavaScript, and various front-end frameworks as React and Angular. Demonstrated expertise back-end technologies including Node.js,, and MySQL. Known for delivering high-quality, user-centered that meet project requirements and exceed client expectations. Passionate about staying up-to-date with the latest web development trends and best practices.</textarea
+          >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-3">
+          <button id="submit" type="submit">Submit</button>
+        </div>
+        <div class="col-3">
+          <button id="reset" type="reset">Reset</button>
+        </div>
+      </div>
+    </form>
+    <script type="text/javascript">
+      const form = document.getElementById("form");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(form);
+        let skills = [];
+        document.querySelectorAll('[type="checkbox"]').forEach(item => {
+        // Iterates through all checkbox elements
+            if (item.checked === true) {
+            skills.push(item.value);
+            // Pushes checkbox value into skills array if checked
+            }
+        });
+        formData.append('skills', skills);
+        const data = Object.fromEntries(formData);
+        console.log("[SUBMIT_DATA]", data);
+      });
+    </script>
+  </body>
+</html>

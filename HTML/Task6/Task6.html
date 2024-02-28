@@ -1,0 +1,110 @@
+<!-- In the form, add two radio buttons with grouping them for employee type(Salaried and own business) -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Details</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <header><h2 class="text-center my-4">Employee Details</h2></header>
+    <section>
+      <form
+        id="employeeID"
+        method="post"
+      >
+        <table cellpadding="5" cellspacing="0">
+          <tr>
+            <td style="width: 50%">
+              <label for="First_Name"><b>First name</b></label
+              ><br />
+              <input
+                name="First_Name"
+                id="First_Name"
+                type="text"
+                maxlength="50"
+                style="width: 100%; max-width: 260px"
+              />
+            </td>
+            <td style="width: 50%">
+              <label for="Last_Name"><b>Last name</b></label
+              ><br />
+              <input
+                name="Last_Name"
+                id="Last_Name"
+                type="text"
+                maxlength="50"
+                style="width: 100%; max-width: 260px"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <label for="Email_Address"><b>Email</b></label
+              ><br />
+              <input
+                name="Email_Address"
+                type="text"
+                id="Email_Address"
+                maxlength="100"
+                style="width: 100%; max-width: 535px"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <label for="salary"><b>Salary (LPA)</b></label
+              ><br />
+              <input
+                name="Salary"
+                id="salary"
+                type="text"
+                maxlength="100"
+                style="width: 100%; max-width: 535px"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <label for="employee_type"><b>Employee Type</b></label
+              ><br />
+              <input
+                name="employee_type"
+                type="radio"
+                id="employee_type"
+                value="Salaried"
+                checked="checked"
+              />
+              Salaried <input name="employee_type" id="employee_type" type="radio" value="Own Business" /> Own Business
+            </td>
+          </tr>
+          <tr>
+          <tr>
+            <td colspan="2" style="text-align: center">
+              <input
+                name="skip_submit"
+                type="submit"
+                value="Submit Details"
+              />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </section>
+    <script type="text/javascript">
+        const form = document.getElementById("employeeID");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            console.log("[SUBMIT_DATA]", data);
+        });
+        </script>
+  </body>
+</html>
